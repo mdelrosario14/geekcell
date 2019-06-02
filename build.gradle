@@ -1,0 +1,74 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+
+
+buildscript {
+    ext {
+        springBootVersion = '2.1.5.RELEASE'
+        tomcatVersion = '9.0.14'
+        baseProjectName = 'geekcell-api'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+jar {
+	baseName = 'boot-gradle'
+	version = '1.0.0'
+}
+sourceCompatibility = 11
+targetCompatibility = 11
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	all*.resolutionStrategy {
+		eachDependency {
+			if (it.requested.group == 'org.apache.tomcat.embed') {
+				it.useVersion "$tomcatVersion"
+			}
+		}
+	}
+}
+
+dependencies {
+	compile(  'org.springframework.boot:spring-boot-starter-web',
+		      'org.springframework.boot:spring-boot-starter-jdbc',
+		      'org.springframework:spring-jdbc',
+		      'mysql:mysql-connector-java:5.1.22',
+		      'org.springframework.boot:spring-boot-starter-security',
+		      'commons-validator:commons-validator:1.4.0',
+		      'org.json:json:20180813',
+		      'org.springframework.boot:spring-boot-starter-mail',
+		      'org.apache.commons:commons-lang3:3.0'
+		)
+		
+		
+	providedCompile (
+	    'org.apache.tomcat.embed:tomcat-embed-jasper',
+		'org.apache.tomcat:tomcat-juli:7.0.90',
+		'org.springframework.boot:spring-boot-starter-tomcat',
+		'org.eclipse.jdt.core.compiler:ecj:4.6.1'
+    )
+	
+	
+	
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+
+war {
+	baseName = "$baseProjectName"
+	archiveName = baseName + ".war"
+	
+	exclude '**/tomcat*.jar'
+	
+}
