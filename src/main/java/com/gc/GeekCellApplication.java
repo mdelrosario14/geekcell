@@ -3,10 +3,15 @@
  * 2019 All rights reserved.
  *
  */
-package com.gc.system;
+package com.gc;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.gc.service.UserAccessService;
 
 /**
  * Main class of the Geek Cell app.
@@ -14,7 +19,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-public class GeekCellApplication {
+public class GeekCellApplication implements CommandLineRunner {
+
 
 	/**
 	 * Main method.
@@ -24,5 +30,16 @@ public class GeekCellApplication {
 		SpringApplication.run(GeekCellApplication.class, args);
 
 	}
+
+	@Autowired
+	private UserAccessService userAccessService;
+
+    @Transactional()
+    @Override
+    public void run(String... args) throws Exception {
+
+    	this.userAccessService.testOnly();
+
+    }
 
 }

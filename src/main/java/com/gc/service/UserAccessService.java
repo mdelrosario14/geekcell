@@ -5,11 +5,18 @@
  */
 package com.gc.service;
 
+import com.gc.exception.DtoException;
+import com.gc.exception.ServiceException;
+import com.gc.exception.UtilityException;
+import com.gc.model.User;
+
 /**
  * Service interface to validate/update login, roles etc.
  * @author Mardolfh Del Rosario
- *
  */
-public class UserAccessService {
+public interface UserAccessService {
+	void testOnly();
+
+	User loginAccount(String email, String pwd) throws ServiceException, UtilityException, DtoException;
 
 }

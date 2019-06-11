@@ -1,0 +1,1 @@
+INSERT INTO `gcf`.`user`(`usr_frst_nm`, `usr_lst_nm`, `usr_email`, `usr_pwd`, `cre8_dt`, `lst_updt`) VALUES ('Mardolfh','Del Rosario', 'mdelrosario14@gmail.com', 'abc123', NOW(), NOW()); 
