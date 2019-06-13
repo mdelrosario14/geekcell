@@ -18,7 +18,7 @@ import com.gc.exception.UtilityException;
 public class MessagePropertyReader extends PropertyReader {
 
 	public MessagePropertyReader() {
-		this("message.properties");
+		this("messages_en.properties");
 	}
 
 	public MessagePropertyReader(String propFileName) {

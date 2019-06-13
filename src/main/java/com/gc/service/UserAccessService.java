@@ -15,8 +15,6 @@ import com.gc.model.User;
  * @author Mardolfh Del Rosario
  */
 public interface UserAccessService {
-	void testOnly();
-
 	User loginAccount(String email, String pwd) throws ServiceException, UtilityException, DtoException;
 
 }

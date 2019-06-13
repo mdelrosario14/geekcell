@@ -5,11 +5,28 @@
  */
 package com.gc.security;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+
+import com.gc.exception.DtoException;
+import com.gc.exception.ServiceException;
+import com.gc.exception.UtilityException;
+import com.gc.model.User;
+import com.gc.service.UserAccessService;
+import com.gc.util.MessageConstants;
+import com.gc.util.MessagePropertyReader;
 
 /**
  * Checks the user authentication and handles the corresponding role.
@@ -19,6 +36,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
 
+	@Autowired
+	private UserAccessService userAccessService;
+
+    @Autowired
+    private MessagePropertyReader messagePropertyReader;
+
+    private static final Logger LOG = LoggerFactory.getLogger(GeekCellAuthenticationProvider.class);
+
 	/**
 	 * This method do the actual authentication and returns granted role of the user.
 	 * @param authentication request auth from user's UI.
@@ -27,8 +52,31 @@ public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
 	 */
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		String user = authentication.getName();
-        String password = authentication.getCredentials().toString();
+		String userEmail = authentication.getName();
+        String pwd = authentication.getCredentials().toString();
+
+        try {
+			User user = this.userAccessService.loginAccount(userEmail, pwd);
+			if (user != null) {
+				List<GrantedAuthority> grantedAuthorities = null;
+				List<String> roles = user.getRoles();
+
+				if (roles != null && !roles.isEmpty()) {
+					grantedAuthorities = new ArrayList<>();
+					for(String role : roles) {
+	                    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
+	                    LOG.info("User is " + grantedAuthorities.get(grantedAuthorities.size()-1).getAuthority());
+					}
+                    return new UsernamePasswordAuthenticationToken(userEmail, pwd, grantedAuthorities);
+				} else {
+					throw new ServiceException(this.messagePropertyReader.getMessageValue(
+							MessageConstants.GC_LOGIN_NOT_AUTHORIZED));
+				}
+			}
+
+		} catch (ServiceException | UtilityException | DtoException e) {
+			throw new AuthenticationCredentialsNotFoundException(e.getMessage(), e);
+		}
 
 
 		return null;

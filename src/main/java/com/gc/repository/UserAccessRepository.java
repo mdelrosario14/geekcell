@@ -1,3 +1,8 @@
+/**
+ * UserAccessRepository.java - Repository dao interface for the object database.
+ * 2019 All rights reserved.
+ *
+ */
 package com.gc.repository;
 
 import java.time.LocalDateTime;
@@ -10,6 +15,11 @@ import org.springframework.stereotype.Repository;
 
 import com.gc.entity.UserEntity;
 
+/**
+ * This repository deals with UserEntity transactions.
+ * @author Mardolfh Del Rosario
+ *
+ */
 @Repository
 public interface UserAccessRepository extends JpaRepository<UserEntity, Long> {
 	List<UserEntity> findByEmail(String email);
