@@ -65,9 +65,9 @@ public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
 					grantedAuthorities = new ArrayList<>();
 					for(String role : roles) {
 	                    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
-	                    LOG.info("User is " + grantedAuthorities.get(grantedAuthorities.size()-1).getAuthority());
+	                    LOG.debug("User is " + grantedAuthorities.get(grantedAuthorities.size()-1).getAuthority());
 					}
-                    return new UsernamePasswordAuthenticationToken(userEmail, pwd, grantedAuthorities);
+                    return new UsernamePasswordAuthenticationToken(user, pwd, grantedAuthorities);
 				} else {
 					throw new ServiceException(this.messagePropertyReader.getMessageValue(
 							MessageConstants.GC_LOGIN_NOT_AUTHORIZED));
