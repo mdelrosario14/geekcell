@@ -5,35 +5,31 @@
  */
 package com.gc.util;
 
+import java.util.Locale;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Component;
 
-import com.gc.exception.UtilityException;
-
 /**
- * This class is a subclass of PropertyReader that focus more on http response.
+ * This class focus on getting message properties.
  * @author Mardolfh Del Rosario
  *
  */
 @Component
-public class MessagePropertyReader extends PropertyReader {
+public class MessagePropertyReader {
 
-	public MessagePropertyReader() {
-		this("messages_en.properties");
+	private static ResourceBundleMessageSource messageSource;
+
+	@Autowired
+	MessagePropertyReader(ResourceBundleMessageSource messageSource) {
+		MessagePropertyReader.messageSource = messageSource;
 	}
 
-	public MessagePropertyReader(String propFileName) {
-		super(propFileName);
+	public String toLocale(String msgCode) {
+		Locale locale = LocaleContextHolder.getLocale();
+		return messageSource.getMessage(msgCode, null, locale);
 	}
-
-    /**
-     * Get the actual message string in message properties.
-     *
-     * @param key value to get
-     * @return value message
-     * @throws UtilityException any type of error.
-     */
-    public String getMessageValue(String key) throws UtilityException {
-    	return super.getProperties().getProperty(key);
-    }
 
 }

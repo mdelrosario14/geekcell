@@ -8,6 +8,7 @@ package com.gc.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.gc.entity.RoleEntity;
 
@@ -16,6 +17,7 @@ import com.gc.entity.RoleEntity;
  * @author Mardolfh Del Rosario
  *
  */
+@Repository
 public interface RoleAccessRepository extends JpaRepository<RoleEntity, Integer> {
 	List<RoleEntity> findByRoleName(String roleName);
 }

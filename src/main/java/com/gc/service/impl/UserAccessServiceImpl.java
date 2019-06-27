@@ -5,8 +5,6 @@
  */
 package com.gc.service.impl;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +26,6 @@ import com.gc.util.MessagePropertyReader;
  */
 @Service
 public class UserAccessServiceImpl implements UserAccessService {
-	@Autowired
-    private DataSource dataSource;
 
     @Autowired
     private UserAccessRepository userAccessRepository;
@@ -45,7 +41,7 @@ public class UserAccessServiceImpl implements UserAccessService {
 		if (null != email && !email.isBlank() && null != pwd && !pwd.isEmpty()) {
 			UserEntity userEntity = this.userAccessRepository.findByLogin(email, pwd).get(0);
 			if (null == userEntity) {
-				throw new ServiceException(this.messagePropertyReader.getMessageValue(
+				throw new ServiceException(this.messagePropertyReader.toLocale(
 						MessageConstants.GC_LOGIN_USER_NOT_FOUND));
 			} else {
 				userLogin = this.userDto.transferDataToModel(userEntity);

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import com.gc.entity.UserEntity;
 import com.gc.exception.DtoException;
-import com.gc.exception.UtilityException;
 import com.gc.model.User;
 import com.gc.util.MessageConstants;
 import com.gc.util.MessagePropertyReader;
@@ -33,26 +32,21 @@ public class UserDto extends EntityModelDto {
 	@Override
 	public User transferDataToModel(Object o) throws DtoException {
 		User user = null;
-		try {
-			if (o instanceof UserEntity && o != null) {
-				UserEntity userEntity = (UserEntity) o;
-				user = new User();
-				user.setEmail(userEntity.getEmail());
-				user.setFirstName(userEntity.getFirstName());
-				user.setLastName(userEntity.getLastName());
+		if (o != null && o instanceof UserEntity) {
+			UserEntity userEntity = (UserEntity) o;
+			user = new User();
+			user.setEmail(userEntity.getEmail());
+			user.setFirstName(userEntity.getFirstName());
+			user.setLastName(userEntity.getLastName());
 
-				//Copy Set<RoleEntity> to List<String>
-				List<String> rolesStrList = userEntity.getRoleEntities()
-						.stream().map(role -> role.getRoleName()).collect(Collectors.toList());
-				user.setRoles(rolesStrList);
+			//Copy Set<RoleEntity> to List<String>
+			List<String> rolesStrList = userEntity.getRoleEntities()
+					.stream().map(role -> role.getRoleName()).collect(Collectors.toList());
+			user.setRoles(rolesStrList);
 
-			} else {
-				throw new DtoException(this.messagePropertyReader.getMessageValue(
-						MessageConstants.GC_DTO_TRANSFER_FAILED));
-			}
-
-		} catch (UtilityException e) {
-			throw new DtoException(EntityModelDto.DTO_ERROR);
+		} else {
+			throw new DtoException(this.messagePropertyReader.toLocale(
+					MessageConstants.GC_DTO_TRANSFER_FAILED));
 		}
 
 		return user;

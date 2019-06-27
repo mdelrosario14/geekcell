@@ -69,7 +69,7 @@ public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
 					}
                     return new UsernamePasswordAuthenticationToken(user, pwd, grantedAuthorities);
 				} else {
-					throw new ServiceException(this.messagePropertyReader.getMessageValue(
+					throw new ServiceException(this.messagePropertyReader.toLocale(
 							MessageConstants.GC_LOGIN_NOT_AUTHORIZED));
 				}
 			}
