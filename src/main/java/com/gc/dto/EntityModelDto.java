@@ -14,5 +14,6 @@ import com.gc.exception.DtoException;
  */
 public abstract class EntityModelDto {
 	static String DTO_ERROR = "Dto transfer failed. Cause: Message Property Reader";
-	abstract Object transferDataToModel(Object o) throws DtoException;
+	abstract Object transferEntityToModel(Object o) throws DtoException;
+	abstract Object transferModelToEntity(Object o) throws DtoException;
 }

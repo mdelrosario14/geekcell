@@ -66,9 +66,9 @@ public class GeekCellAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHa
         //User can have multiple roles.  Need to cast it in an individual specific user.
     	if (null != rolesList && !rolesList.isEmpty()) {
     		for (String role : rolesList) {
-    			if (role != null && !role.isBlank() && role.equalsIgnoreCase("ROLE_ADMIN")) {
+    			if (role != null && !role.isBlank()) {
     				JSONObject obj = new JSONObject(user);
-    				node.putPOJO("admin", obj);
+    				node.putPOJO("valid-user", obj);
     			}
     		}
     	}

@@ -17,6 +17,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private List<String> roles;
+	private String pwd;
 
 	public String getEmail() {
 		return this.email;
@@ -41,6 +42,12 @@ public class User {
 	}
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
+	}
+	public String getPwd() {
+		return this.pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 }

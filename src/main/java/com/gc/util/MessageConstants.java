@@ -12,6 +12,8 @@ package com.gc.util;
  */
 public interface MessageConstants {
 	String GC_LOGIN_USER_NOT_FOUND = "gc.login.usernotfound";
+	String GC_LOGIN_USER_INVALID = "gc.login.userinvalid";
 	String GC_LOGIN_NOT_AUTHORIZED = "gc.login.notauthorized";
 	String GC_DTO_TRANSFER_FAILED = "gc.dto.transferfailed";
+	String GC_REGISTER_FAILED = "gc.register.failed";
 }
