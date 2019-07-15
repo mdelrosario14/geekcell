@@ -10,6 +10,7 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -41,6 +42,10 @@ public class GeekCellSecurityConfig extends WebSecurityConfigurerAdapter {
     private GeekCellAuthAuthenticationFailureHandler authFailureHandler;
 	@Autowired
     private GeekCellAuthenticationLogoutSuccessHandler authLogoutHandler;
+	@Value(value = "${cors-origin}")
+	private String corsSetting;
+	@Value(value = "${cors-timeout}")
+	private String corsTimeout;
 
 
     /**
@@ -63,7 +68,7 @@ public class GeekCellSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-          .antMatchers("/register", "/login", "/logout", "/securityQuestions/**").permitAll()
+          .antMatchers("/register", "/login", "/logout", "/securityQuestions/**","/frontPage").permitAll()
           .antMatchers("/geekcell-user/**").hasAnyRole("ADMIN", "GCSTANDARD")
           .anyRequest().denyAll()
           .and()
@@ -84,7 +89,7 @@ public class GeekCellSecurityConfig extends WebSecurityConfigurerAdapter {
           .and()
           .csrf().csrfTokenRepository(
                new LazyCsrfTokenRepository(new HttpSessionCsrfTokenRepository()))
-              .ignoringAntMatchers("/register", "/login", "/logout", "/securityQuestions/**")
+              .ignoringAntMatchers("/register", "/login", "/logout", "/securityQuestions/**", "/frontPage")
           .and()
               .cors().configurationSource(this.corsConfigurationSource());
     }
@@ -92,9 +97,11 @@ public class GeekCellSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
+        configuration.setAllowedOrigins(Arrays.asList(this.corsSetting));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.addAllowedHeader("*");
+        configuration.setAllowCredentials(true);
+        configuration.setMaxAge(Long.valueOf(this.corsTimeout));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

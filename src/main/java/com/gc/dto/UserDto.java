@@ -39,9 +39,10 @@ public class UserDto extends EntityModelDto {
 	@Override
 	public User transferEntityToModel(Object o) throws DtoException {
 		User user = null;
-		if (o != null && o instanceof UserEntity) {
+		if (null != o && o instanceof UserEntity) {
 			UserEntity userEntity = (UserEntity) o;
 			user = new User();
+			user.setUserId(userEntity.getUserId().toString());
 			user.setEmail(userEntity.getEmail());
 			user.setFirstName(userEntity.getFirstName());
 			user.setLastName(userEntity.getLastName());
@@ -64,7 +65,7 @@ public class UserDto extends EntityModelDto {
 	@Override
 	public UserEntity transferModelToEntity(Object o) throws DtoException {
 		UserEntity userEntity = null;
-		if (o != null && o instanceof User) {
+		if (null != o && o instanceof User) {
 			User user = (User) o;
 			userEntity = new UserEntity();
 			LocalDateTime today = LocalDateTime.now();

@@ -13,11 +13,19 @@ import java.util.List;
  *
  */
 public class User {
+	private String userId;
 	private String email;
 	private String firstName;
 	private String lastName;
 	private List<String> roles;
 	private String pwd;
+
+	public String getUserId() {
+		return this.userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
 	public String getEmail() {
 		return this.email;
@@ -49,5 +57,6 @@ public class User {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+
 
 }

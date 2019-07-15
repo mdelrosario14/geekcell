@@ -1,7 +1,11 @@
 package com.gc.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +23,16 @@ public class UserEntryController {
 	private UserAccessService userAccessService;
 
 	/**
+	 * This API is just used when loading initial page in UI.
+	 *
+	 * @return String date time format.
+	 */
+    @GetMapping("frontPage")
+	public String frontPage() {
+		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	}
+
+	/**
      * Register new user.
      *
      * @param user             User reference from UI.
@@ -34,5 +48,8 @@ public class UserEntryController {
         }
 
     }
+
+
+
 
 }

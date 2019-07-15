@@ -65,21 +65,23 @@ public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
 					grantedAuthorities = new ArrayList<>();
 					for(String role : roles) {
 	                    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
-	                    LOG.debug("User is " + grantedAuthorities.get(grantedAuthorities.size()-1).getAuthority());
+	                    LOG.warn("User has " + grantedAuthorities.get(grantedAuthorities.size()-1).getAuthority());
 					}
                     return new UsernamePasswordAuthenticationToken(user, pwd, grantedAuthorities);
 				} else {
 					throw new ServiceException(this.messagePropertyReader.toLocale(
 							MessageConstants.GC_LOGIN_NOT_AUTHORIZED));
 				}
+			} else {
+				throw new ServiceException(this.messagePropertyReader.toLocale(
+						MessageConstants.GC_LOGIN_USER_INVALID));
 			}
 
 		} catch (ServiceException | UtilityException | DtoException e) {
+			LOG.warn("User " + userEmail + ", " + e.getMessage());
 			throw new AuthenticationCredentialsNotFoundException(e.getMessage(), e);
 		}
 
-
-		return null;
 	}
 
 	/**

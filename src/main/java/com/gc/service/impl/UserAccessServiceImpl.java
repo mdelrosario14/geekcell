@@ -5,6 +5,8 @@
  */
 package com.gc.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,18 +44,25 @@ public class UserAccessServiceImpl implements UserAccessService {
 	public User loginAccount(String email, String pwd) throws ServiceException, UtilityException, DtoException {
 		User userLogin = null;
 		if (null != email && !email.isBlank() && null != pwd && !pwd.isEmpty()) {
-			UserEntity userEntity = this.userAccessRepository.findByEmail(email).get(0);
-			if (null == userEntity) {
+			List<UserEntity> userEntities = this.userAccessRepository.findByEmail(email);
+			if (null != userEntities && !userEntities.isEmpty()) {
+				UserEntity userEntity = this.userAccessRepository.findByEmail(email).get(0);
+				if (null == userEntity) {
+					throw new ServiceException(this.messagePropertyReader.toLocale(
+							MessageConstants.GC_LOGIN_USER_NOT_FOUND));
+				} else {
+					if (this.bCryptPasswordEncoder.matches(pwd, userEntity.getPwd())) {
+						userLogin = this.userDto.transferEntityToModel(userEntity);
+					} else {
+						throw new ServiceException(this.messagePropertyReader.toLocale(
+								MessageConstants.GC_LOGIN_USER_INVALID));
+					}
+				}
+			} else {
 				throw new ServiceException(this.messagePropertyReader.toLocale(
 						MessageConstants.GC_LOGIN_USER_NOT_FOUND));
-			} else {
-				if (this.bCryptPasswordEncoder.matches(pwd, userEntity.getPwd())) {
-					userLogin = this.userDto.transferEntityToModel(userEntity);
-				} else {
-					throw new ServiceException(this.messagePropertyReader.toLocale(
-							MessageConstants.GC_LOGIN_USER_INVALID));
-				}
 			}
+
 		}
 
 		return userLogin;
