@@ -68,7 +68,7 @@ public class GeekCellAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHa
     		for (String role : rolesList) {
     			if (role != null && !role.isBlank()) {
     				JSONObject obj = new JSONObject(user);
-    				node.putPOJO("valid-user", obj);
+    				node.putPOJO("validUser", obj);
     			}
     		}
     	}
