@@ -32,7 +32,7 @@ public class RoleEntity implements java.io.Serializable {
 	@Id
 	@Column(name = "ROLE_ID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GCRL_SEQ")
-	@SequenceGenerator(sequenceName = "geekCellRole_sequence", allocationSize = 1, name = "GCUSR_SEQ")
+	@SequenceGenerator(sequenceName = "geekCellRole_sequence", allocationSize = 1, name = "GCRL_SEQ")
 	Integer roleId;
 
 	@Column(name = "ROLE_NM")

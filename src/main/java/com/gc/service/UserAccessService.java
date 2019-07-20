@@ -17,5 +17,6 @@ import com.gc.model.User;
 public interface UserAccessService {
 	User loginAccount(String email, String pwd) throws ServiceException, UtilityException, DtoException;
 	User createUser(User user) throws ServiceException, UtilityException, DtoException;
+	void insertLoginTrail(String ipAddress, String userName) throws ServiceException;
 
 }

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -25,7 +26,9 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.gc.exception.ServiceException;
 import com.gc.model.User;
+import com.gc.service.UserAccessService;
 
 /**
  * Success handler if user is authenticated.
@@ -34,6 +37,9 @@ import com.gc.model.User;
  */
 @Component
 public class GeekCellAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
+
+	@Autowired
+	private UserAccessService userAccessService;
 
 	private static final Logger LOG = LoggerFactory.getLogger(GeekCellAuthSuccessHandler.class);
 
@@ -78,6 +84,8 @@ public class GeekCellAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHa
         LOG.debug("tokenlog="  + token.getToken());
         node.put("_csrf", token.getToken());
 
+        this.createLoginTrail(request.getRemoteAddr(), user.getEmail());
+
         response.setContentType("application/json");
         PrintWriter writer = response.getWriter();
         writer.print(node);
@@ -85,4 +93,18 @@ public class GeekCellAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHa
         writer.close();
 
     }
+
+	/**
+	 * Logs the request' IP address into the system.
+	 *
+	 * @param ipAddress	ip address of the client.
+	 * @param userName  email address of logged user.
+	 */
+	private void createLoginTrail(String ipAddress, String userName) {
+		try {
+			this.userAccessService.insertLoginTrail(ipAddress, userName);
+		} catch (ServiceException e) {
+			LOG.error("Unable to log client IP.");
+		}
+	}
 }
