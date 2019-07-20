@@ -1,3 +1,8 @@
+/**
+ * UserEntryController.java - User login register controller.
+ * 2019 All rights reserved.
+ *
+ */
 package com.gc.controller;
 
 import java.time.LocalDateTime;
@@ -16,6 +21,11 @@ import com.gc.exception.UtilityException;
 import com.gc.model.User;
 import com.gc.service.UserAccessService;
 
+/**
+ * This controller handles all user login, register etc.
+ * @author Mardolfh Del Rosario
+ *
+ */
 @RestController
 public class UserEntryController {
 
@@ -48,8 +58,4 @@ public class UserEntryController {
         }
 
     }
-
-
-
-
 }
