@@ -56,6 +56,5 @@ public class UserEntryController {
         } catch (ServiceException | UtilityException | DtoException e) {
         	return ResponseEntity.status(404).body(e.getMessage());
         }
-
     }
 }
