@@ -77,6 +77,20 @@ public class UserAccessServiceImpl implements UserAccessService {
 	@Override
 	public User createUser(User user) throws ServiceException, UtilityException, DtoException {
 		if (null != user) {
+			if (this.isUserExists(user.getEmail())) {
+				throw new ServiceException(this.messagePropertyReader.toLocale(
+						MessageConstants.GC_REGISTER_USER_EXISTS));
+			}
+
+			if (!this.isPasswordCompliant(user.getPwd())) {
+				throw new ServiceException(this.messagePropertyReader.toLocale(
+						MessageConstants.GC_REGISTER_PWD_NON_COMPLIANT));
+			}
+
+			//set email to lower case
+			user.setEmail(user.getEmail().toLowerCase().trim());
+
+			//Encrypt password
 			String rawPwd = user.getPwd();
 			user.setPwd(this.bCryptPasswordEncoder.encode(rawPwd));
 
@@ -104,5 +118,56 @@ public class UserAccessServiceImpl implements UserAccessService {
 			this.loginAccessRepository.save(logEntity);
 		}
 
+	}
+
+	/**
+	 * This method checks if user email exists in the database.
+	 *
+	 * @param userEmail email address to verify.
+	 * @return true/false exists or not.
+	 */
+	private boolean isUserExists(String userEmail) {
+		boolean isUserExist = false;
+
+		List<UserEntity> userEntities = this.userAccessRepository.findByEmail(userEmail.toLowerCase());
+		if (null != userEntities && !userEntities.isEmpty()) {
+			isUserExist = true;
+		}
+
+		return isUserExist;
+	}
+
+
+	/**
+	 * This checks whether a provided password is compliant.
+	 *
+	 * @param password to be tested.
+	 * @return true/false if compliant.
+	 */
+	private boolean isPasswordCompliant(String password) throws ServiceException {
+		boolean isPwdCompliant = false;
+		if (password.isBlank() || password.length() < 8) {
+			throw new ServiceException(this.messagePropertyReader.toLocale(
+					MessageConstants.GC_REGISTER_PWD_LEN));
+		}
+
+		int let, num, spclChar;
+		let = num = spclChar = 0;
+		for (char pwd : password.toCharArray()) {
+			String charPwdStr = String.valueOf(pwd);
+			if (charPwdStr.matches("[A-Za-z]+")) {
+				let++;
+			} else if (charPwdStr.matches("[0-9]+")) {
+				num++;
+			} else {
+				spclChar++;
+			}
+		}
+
+		if (let > 0 && num > 0 && spclChar > 0) {
+			isPwdCompliant = true;
+		}
+
+		return isPwdCompliant;
 	}
 }

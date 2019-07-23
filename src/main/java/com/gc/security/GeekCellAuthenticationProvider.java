@@ -46,13 +46,14 @@ public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
 
 	/**
 	 * This method do the actual authentication and returns granted role of the user.
+	 *
 	 * @param authentication request auth from user's UI.
 	 * @return Authentication reference of the validated auth.
 	 * @exception AuthenticationException any errors related to authentication.
 	 */
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-		String userEmail = authentication.getName();
+		String userEmail = authentication.getName().toLowerCase().trim();
         String pwd = authentication.getCredentials().toString();
 
         try {
@@ -86,6 +87,7 @@ public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
 
 	/**
 	 * Tells Spring to support the username/password authentication.
+	 *
 	 * @param authentication any Class that uses authentication mechanism.
 	 * @return boolean supports the implementation or not.
 	 */

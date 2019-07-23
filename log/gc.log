@@ -1,0 +1,110 @@
+2019-07-22 19:54:48,112 INFO com.gc.GeekCellApplication [main] Starting GeekCellApplication on MardyWindows10 with PID 6776 (C:\Users\mdelr\git\geekcell-api\bin\main started by mdelr in C:\Users\mdelr\git\geekcell-api)
+2019-07-22 19:54:48,140 INFO com.gc.GeekCellApplication [main] The following profiles are active: dev
+2019-07-22 19:54:50,487 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2019-07-22 19:54:50,488 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-07-22 19:54:50,886 INFO org.apache.jasper.servlet.TldScanner [main] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-07-22 19:54:50,904 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2019-07-22 19:54:51,147 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-07-22 19:54:51,777 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-07-22 19:54:51,911 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-22 19:54:52,241 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2019-07-22 19:54:52,245 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2019-07-22 19:54:53,003 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-07-22 19:54:53,694 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-07-22 19:55:02,146 INFO com.gc.GeekCellApplication [main] Started GeekCellApplication in 14.648 seconds (JVM running for 16.197)
+2019-07-22 20:15:43,923 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+2019-07-22 20:15:43,979 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown completed.
+2019-07-22 20:15:57,940 INFO com.gc.GeekCellApplication [main] Starting GeekCellApplication on MardyWindows10 with PID 17368 (C:\Users\mdelr\git\geekcell-api\bin\main started by mdelr in C:\Users\mdelr\git\geekcell-api)
+2019-07-22 20:15:57,944 INFO com.gc.GeekCellApplication [main] The following profiles are active: dev
+2019-07-22 20:16:00,170 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2019-07-22 20:16:00,171 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-07-22 20:16:00,555 INFO org.apache.jasper.servlet.TldScanner [main] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-07-22 20:16:00,571 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2019-07-22 20:16:00,809 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-07-22 20:16:01,261 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-07-22 20:16:01,341 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-22 20:16:01,450 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2019-07-22 20:16:01,453 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2019-07-22 20:16:01,661 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-07-22 20:16:01,856 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-07-22 20:16:04,725 INFO com.gc.GeekCellApplication [main] Started GeekCellApplication in 7.346 seconds (JVM running for 8.757)
+2019-07-22 20:34:31,743 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-22 20:34:32,132 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-nio-8080-exec-2] HHH000397: Using ASTQueryTranslatorFactory
+2019-07-22 20:38:08,850 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+2019-07-22 20:38:08,872 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown completed.
+2019-07-22 20:38:21,334 INFO com.gc.GeekCellApplication [main] Starting GeekCellApplication on MardyWindows10 with PID 15740 (C:\Users\mdelr\git\geekcell-api\bin\main started by mdelr in C:\Users\mdelr\git\geekcell-api)
+2019-07-22 20:38:21,339 INFO com.gc.GeekCellApplication [main] The following profiles are active: dev
+2019-07-22 20:38:24,354 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2019-07-22 20:38:24,355 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-07-22 20:38:24,707 INFO org.apache.jasper.servlet.TldScanner [main] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-07-22 20:38:24,722 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2019-07-22 20:38:25,030 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-07-22 20:38:25,500 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-07-22 20:38:25,583 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-22 20:38:25,693 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2019-07-22 20:38:25,696 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2019-07-22 20:38:25,910 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-07-22 20:38:26,110 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-07-22 20:38:29,113 INFO com.gc.GeekCellApplication [main] Started GeekCellApplication in 8.442 seconds (JVM running for 10.076)
+2019-07-22 20:39:42,751 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-22 20:39:42,965 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-nio-8080-exec-1] HHH000397: Using ASTQueryTranslatorFactory
+2019-07-22 20:51:02,032 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+2019-07-22 20:51:02,053 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown completed.
+2019-07-22 20:51:11,239 INFO com.gc.GeekCellApplication [main] Starting GeekCellApplication on MardyWindows10 with PID 7812 (C:\Users\mdelr\git\geekcell-api\bin\main started by mdelr in C:\Users\mdelr\git\geekcell-api)
+2019-07-22 20:51:11,244 INFO com.gc.GeekCellApplication [main] The following profiles are active: dev
+2019-07-22 20:51:13,561 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2019-07-22 20:51:13,562 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-07-22 20:51:13,882 INFO org.apache.jasper.servlet.TldScanner [main] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-07-22 20:51:13,898 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2019-07-22 20:51:14,138 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-07-22 20:51:14,580 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-07-22 20:51:14,658 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-22 20:51:14,765 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2019-07-22 20:51:14,767 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2019-07-22 20:51:14,976 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-07-22 20:51:15,174 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-07-22 20:51:18,153 INFO com.gc.GeekCellApplication [main] Started GeekCellApplication in 7.507 seconds (JVM running for 8.975)
+2019-07-22 20:53:43,278 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-22 20:53:43,509 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-nio-8080-exec-2] HHH000397: Using ASTQueryTranslatorFactory
+2019-07-22 21:07:50,422 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-7] User rudy.Gobert@utahJazz.com, Invalid username and password.
+2019-07-22 21:09:20,534 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+2019-07-22 21:09:20,555 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown completed.
+2019-07-22 21:09:27,646 INFO com.gc.GeekCellApplication [main] Starting GeekCellApplication on MardyWindows10 with PID 9976 (C:\Users\mdelr\git\geekcell-api\bin\main started by mdelr in C:\Users\mdelr\git\geekcell-api)
+2019-07-22 21:09:27,650 INFO com.gc.GeekCellApplication [main] The following profiles are active: dev
+2019-07-22 21:09:29,876 INFO org.apache.catalina.core.StandardService [main] Starting service [Tomcat]
+2019-07-22 21:09:29,877 INFO org.apache.catalina.core.StandardEngine [main] Starting Servlet engine: [Apache Tomcat/9.0.14]
+2019-07-22 21:09:30,200 INFO org.apache.jasper.servlet.TldScanner [main] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-07-22 21:09:30,216 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [main] Initializing Spring embedded WebApplicationContext
+2019-07-22 21:09:30,448 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Starting...
+2019-07-22 21:09:30,928 INFO com.zaxxer.hikari.HikariDataSource [main] HikariPool-1 - Start completed.
+2019-07-22 21:09:31,007 INFO org.hibernate.jpa.internal.util.LogHelper [main] HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-07-22 21:09:31,110 INFO org.hibernate.Version [main] HHH000412: Hibernate Core {5.3.10.Final}
+2019-07-22 21:09:31,113 INFO org.hibernate.cfg.Environment [main] HHH000206: hibernate.properties not found
+2019-07-22 21:09:31,316 INFO org.hibernate.annotations.common.Version [main] HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-07-22 21:09:31,510 INFO org.hibernate.dialect.Dialect [main] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-07-22 21:09:34,451 INFO com.gc.GeekCellApplication [main] Started GeekCellApplication in 7.398 seconds (JVM running for 8.839)
+2019-07-22 21:10:08,759 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-07-22 21:10:08,848 INFO org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [http-nio-8080-exec-1] HHH000397: Using ASTQueryTranslatorFactory
+2019-07-22 21:10:09,198 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-1] User rudy.gobert@utahjazz.com, Invalid username and password.
+2019-07-22 21:10:27,784 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-2] User rudy.gobert@utahjazz.com, Invalid username and password.
+2019-07-22 21:10:41,187 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-3] User rudy.gobert@utahjazz.com, Invalid username and password.
+2019-07-22 21:12:09,940 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-5] User mike.conley@utahjazz.com, Invalid username and password.
+2019-07-22 21:12:17,536 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-6] User mike.conley@utahjazz.com, Invalid username and password.
+2019-07-22 21:12:27,625 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-7] User mike.conley@utahjazz.com, Invalid username and password.
+2019-07-22 21:12:35,797 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-8] User has ROLE_GCSTANDARD
+2019-07-22 21:12:36,123 WARN org.apache.catalina.util.SessionIdGeneratorBase [http-nio-8080-exec-8] Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [278] milliseconds.
+2019-07-22 21:28:12,582 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-2] User has ROLE_GCSTANDARD
+2019-07-22 21:28:53,871 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-3] User , Invalid username and password.
+2019-07-22 21:29:06,955 WARN com.gc.security.GeekCellAuthenticationProvider [http-nio-8080-exec-4] User , Invalid username and password.
+2019-07-22 21:32:41,904 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown initiated...
+2019-07-22 21:32:41,927 INFO com.zaxxer.hikari.HikariDataSource [RMI TCP Connection(2)-127.0.0.1] HikariPool-1 - Shutdown completed.

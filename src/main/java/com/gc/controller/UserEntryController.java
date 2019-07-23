@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,7 +55,7 @@ public class UserEntryController {
             user = this.userAccessService.createUser(user);
             return ResponseEntity.ok().body(user);
         } catch (ServiceException | UtilityException | DtoException e) {
-        	return ResponseEntity.status(404).body(e.getMessage());
+        	return new ResponseEntity<>(e.getMessage(), HttpStatus.EXPECTATION_FAILED);
         }
     }
 }

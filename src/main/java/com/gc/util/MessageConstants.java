@@ -16,4 +16,7 @@ public interface MessageConstants {
 	String GC_LOGIN_NOT_AUTHORIZED = "gc.login.notauthorized";
 	String GC_DTO_TRANSFER_FAILED = "gc.dto.transferfailed";
 	String GC_REGISTER_FAILED = "gc.register.failed";
+	String GC_REGISTER_USER_EXISTS = "gc.register.user.exists";
+	String GC_REGISTER_PWD_LEN = "gc.register.pwd.length";
+	String GC_REGISTER_PWD_NON_COMPLIANT = "gc.register.pwd.non.compliant";
 }
