@@ -60,6 +60,9 @@ public class UserEntity implements java.io.Serializable {
 	@Column(name = "ACTV_SW")
 	String activeSwitch;
 
+	@Column(name = "CHNGE_PWD_DT")
+	LocalDateTime changePwdDate;
+
 
 	@ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "USR_ROLE",
@@ -72,7 +75,7 @@ public class UserEntity implements java.io.Serializable {
 	}
 
 	public UserEntity(Long userId, String firstName, String lastName, String email, String pwd,
-			LocalDateTime createDateTime, LocalDateTime lastUpdate, String activeSwitch,
+			LocalDateTime createDateTime, LocalDateTime lastUpdate, String activeSwitch, LocalDateTime changePwdDate,
 			Set<RoleEntity> roleEntities) {
 		super();
 		this.userId = userId;
@@ -83,8 +86,10 @@ public class UserEntity implements java.io.Serializable {
 		this.createDateTime = createDateTime;
 		this.lastUpdate = lastUpdate;
 		this.activeSwitch = activeSwitch;
+		this.changePwdDate = changePwdDate;
 		this.roleEntities = roleEntities;
 	}
+
 
 	public Long getUserId() {
 		return this.userId;
@@ -150,6 +155,15 @@ public class UserEntity implements java.io.Serializable {
 		this.activeSwitch = activeSwitch;
 	}
 
+	public LocalDateTime getChangePwdDate() {
+		return this.changePwdDate;
+	}
+
+	public void setChangePwdDate(LocalDateTime changePwdDate) {
+		this.changePwdDate = changePwdDate;
+	}
+
+
 	public Set<RoleEntity> getRoleEntities() {
 		return this.roleEntities;
 	}
@@ -162,7 +176,8 @@ public class UserEntity implements java.io.Serializable {
 	public String toString() {
 		return "UserEntity [userId=" + this.userId + ", firstName=" + this.firstName + ", lastName=" +
 				this.lastName + ", email=" + this.email + ", pwd=" + this.pwd + ", createDateTime=" +
-				this.createDateTime + ", lastUpdate=" + this.lastUpdate + ", activeSwitch=" + this.activeSwitch + "]";
+				this.createDateTime + ", lastUpdate=" + this.lastUpdate + ", activeSwitch=" +
+				this.activeSwitch + ", changePwdDate=" + this.changePwdDate + ", roleEntities="	+ this.roleEntities;
 	}
 
 

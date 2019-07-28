@@ -95,6 +95,9 @@ public class UserAccessServiceImpl implements UserAccessService {
 			user.setPwd(this.bCryptPasswordEncoder.encode(rawPwd));
 
 			UserEntity userEntity = this.userDto.transferModelToEntity(user);
+			//Set next change password date
+			userEntity.setChangePwdDate(LocalDateTime.now().plusDays(60));
+
 			this.userAccessRepository.save(userEntity);
 
 			user.setPwd("********");

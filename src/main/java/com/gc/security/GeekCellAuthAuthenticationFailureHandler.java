@@ -28,6 +28,7 @@ public class GeekCellAuthAuthenticationFailureHandler extends SimpleUrlAuthentic
 
 	/**
 	 * Execute onAuthenticationFailure on unauthenticated access.
+	 *
 	 * @param request HttpServletRequest reference.
 	 * @param response HttpServletResponse reference.
 	 * @param exception AuthenticationException type of auth error.
