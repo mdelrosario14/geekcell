@@ -33,7 +33,7 @@ public class GeekCellAuthenticationLogoutSuccessHandler extends SimpleUrlLogoutS
 	@Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) {
-        LOG.debug("GeekCell user has logged out: " + authentication.getPrincipal());
+        LOG.debug("GeekCell user has logged out.");
         response.setStatus(HttpServletResponse.SC_OK);
     }
 }

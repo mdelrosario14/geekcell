@@ -46,7 +46,7 @@ public class UserDto extends EntityModelDto {
 			user.setEmail(userEntity.getEmail());
 			user.setFirstName(userEntity.getFirstName());
 			user.setLastName(userEntity.getLastName());
-			user.setPwd("******");
+			user.setPwd(userEntity.getPwd());
 
 			//Copy Set<RoleEntity> to List<String>
 			List<String> rolesStrList = userEntity.getRoleEntities()

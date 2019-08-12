@@ -5,7 +5,6 @@
  */
 package com.gc.security;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,7 +16,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.gc.exception.DtoException;
@@ -25,6 +23,7 @@ import com.gc.exception.ServiceException;
 import com.gc.exception.UtilityException;
 import com.gc.model.User;
 import com.gc.service.UserAccessService;
+import com.gc.util.AccessUtil;
 import com.gc.util.MessageConstants;
 import com.gc.util.MessagePropertyReader;
 
@@ -41,6 +40,9 @@ public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
 
     @Autowired
     private MessagePropertyReader messagePropertyReader;
+
+    @Autowired
+    private AccessUtil accessUtil;
 
     private static final Logger LOG = LoggerFactory.getLogger(GeekCellAuthenticationProvider.class);
 
@@ -59,16 +61,9 @@ public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
         try {
 			User user = this.userAccessService.loginAccount(userEmail, pwd);
 			if (user != null) {
-				List<GrantedAuthority> grantedAuthorities = null;
-				List<String> roles = user.getRoles();
-
-				if (roles != null && !roles.isEmpty()) {
-					grantedAuthorities = new ArrayList<>();
-					for(String role : roles) {
-	                    grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
-	                    LOG.warn("User has " + grantedAuthorities.get(grantedAuthorities.size()-1).getAuthority());
-					}
-                    return new UsernamePasswordAuthenticationToken(user, pwd, grantedAuthorities);
+				List<GrantedAuthority> grantedAuthorities = this.accessUtil.getGrantedAuthorities(user.getRoles());
+				if (null != grantedAuthorities) {
+					return new UsernamePasswordAuthenticationToken(user, pwd, grantedAuthorities);
 				} else {
 					throw new ServiceException(this.messagePropertyReader.toLocale(
 							MessageConstants.GC_LOGIN_NOT_AUTHORIZED));

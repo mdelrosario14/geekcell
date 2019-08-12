@@ -173,4 +173,18 @@ public class UserAccessServiceImpl implements UserAccessService {
 
 		return isPwdCompliant;
 	}
+
+
+	@Override
+	public User getUserDetailsByEmail(String email) throws ServiceException {
+		List<UserEntity> users = this.userAccessRepository.findByEmail(email);
+		User user = null;
+		try {
+			user = this.userDto.transferEntityToModel(users.get(0));
+		} catch (DtoException e) {
+			throw new ServiceException(e.getMessage());
+		}
+
+		return user;
+	}
 }

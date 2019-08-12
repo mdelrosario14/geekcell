@@ -79,10 +79,9 @@ public class GeekCellAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHa
     		}
     	}
 
-
-        CsrfToken token = (CsrfToken)request.getAttribute(CsrfToken.class.getName());
-        LOG.debug("tokenlog="  + token.getToken());
-        node.put("_csrf", token.getToken());
+        CsrfToken csrfToken = (CsrfToken)request.getAttribute(CsrfToken.class.getName());
+        LOG.debug("_csrfToken="  + csrfToken.getToken());
+        node.put("_csrf", csrfToken.getToken());
 
         this.createLoginTrail(request.getRemoteAddr(), user.getEmail());
 
@@ -104,7 +103,7 @@ public class GeekCellAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHa
 		try {
 			this.userAccessService.insertLoginTrail(ipAddress, userName);
 		} catch (ServiceException e) {
-			LOG.error("Unable to log client IP.");
+			LOG.error("Unable to log client IP.", e);
 		}
 	}
 }
