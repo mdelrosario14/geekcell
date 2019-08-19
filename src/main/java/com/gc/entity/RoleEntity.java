@@ -11,11 +11,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -31,8 +28,6 @@ public class RoleEntity implements java.io.Serializable {
 
 	@Id
 	@Column(name = "ROLE_ID")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GCRL_SEQ")
-	@SequenceGenerator(sequenceName = "geekCellRole_sequence", allocationSize = 1, name = "GCRL_SEQ")
 	Integer roleId;
 
 	@Column(name = "ROLE_NM")
