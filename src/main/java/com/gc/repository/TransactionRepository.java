@@ -31,7 +31,7 @@ public interface TransactionRepository extends JpaRepository<TransactionEntity, 
 			"tx.trxDateTime, ti.trxIncId, ti.trxIncDesc, ti.currCd, sum(tx.debit) as totalCnt) " +
 			"from TransactionEntity tx join tx.income ti " +
 			"group by tx.trxDateTime, ti.trxIncId, ti.trxIncDesc, ti.currCd " +
-	        "having YEAR(tx.trx_dt)= :trxYear and ti.currCd = :curr" , nativeQuery = false)
-    List<IncomeGroup> getAnnualIncomeByCurr(@Param("trxYear") int year, @Param("curr") Currency curr);
+	        "having YEAR(tx.trxDateTime)= :trxYear and ti.currCd = :curr" , nativeQuery = false)
+    List<IncomeGroup> findByAnnualIncomeByCurr(@Param("trxYear") int trxTear, @Param("curr") Currency curr);
 
 }

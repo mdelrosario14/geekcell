@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.gc.dto.TrxMapper;
 import com.gc.entity.TransactionEntity;
@@ -16,6 +17,7 @@ import com.gc.repository.TransactionRepository;
 import com.gc.service.TransactionService;
 import com.gc.util.GeekCellUtil;
 
+@Service
 public class TransactionServiceImpl implements TransactionService {
 
 	@Autowired

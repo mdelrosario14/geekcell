@@ -26,7 +26,7 @@ public class WorkSheetServiceImpl implements WorksheetService {
 	@Override
 	public List<IncomeGroup> getAnnualIncomeSummary(LocalDateTime ldt, Currency curr)
 			throws ServiceException {
-		return this.transactionRepository.getAnnualIncomeByCurr(ldt.getYear(), curr);
+		return this.transactionRepository.findByAnnualIncomeByCurr(ldt.getYear(), curr);
 	}
 
 	@Override
