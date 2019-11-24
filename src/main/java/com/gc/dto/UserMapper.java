@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 import com.gc.entity.RoleEntity;
 import com.gc.entity.UserEntity;
-import com.gc.exception.DtoException;
+import com.gc.exception.MapperException;
 import com.gc.model.User;
 import com.gc.repository.RoleAccessRepository;
 import com.gc.util.MessageConstants;
@@ -27,7 +27,7 @@ import com.gc.util.MessagePropertyReader;
  *
  */
 @Component
-public class UserDto extends EntityModelDto {
+public class UserMapper extends EntityModelMapper {
 
 	@Autowired
 	private MessagePropertyReader messagePropertyReader;
@@ -37,7 +37,7 @@ public class UserDto extends EntityModelDto {
 
 
 	@Override
-	public User transferEntityToModel(Object o) throws DtoException {
+	public User transferEntityToModel(Object o) throws MapperException {
 		User user = null;
 		if (null != o && o instanceof UserEntity) {
 			UserEntity userEntity = (UserEntity) o;
@@ -54,7 +54,7 @@ public class UserDto extends EntityModelDto {
 			user.setRoles(rolesStrList);
 
 		} else {
-			throw new DtoException(this.messagePropertyReader.toLocale(
+			throw new MapperException(this.messagePropertyReader.toLocale(
 					MessageConstants.GC_DTO_TRANSFER_FAILED));
 		}
 
@@ -63,7 +63,7 @@ public class UserDto extends EntityModelDto {
 
 
 	@Override
-	public UserEntity transferModelToEntity(Object o) throws DtoException {
+	public UserEntity transferModelToEntity(Object o) throws MapperException {
 		UserEntity userEntity = null;
 		if (null != o && o instanceof User) {
 			User user = (User) o;
@@ -83,7 +83,7 @@ public class UserDto extends EntityModelDto {
 
 			userEntity.setRoleEntities(roleSetEntity);
 		} else {
-			throw new DtoException(this.messagePropertyReader.toLocale(
+			throw new MapperException(this.messagePropertyReader.toLocale(
 					MessageConstants.GC_DTO_TRANSFER_FAILED));
 		}
 

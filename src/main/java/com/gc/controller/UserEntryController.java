@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gc.exception.DtoException;
+import com.gc.exception.MapperException;
 import com.gc.exception.ServiceException;
 import com.gc.exception.UtilityException;
 import com.gc.model.User;
@@ -54,7 +54,7 @@ public class UserEntryController {
         try {
             user = this.userAccessService.createUser(user);
             return ResponseEntity.ok().body(user);
-        } catch (ServiceException | UtilityException | DtoException e) {
+        } catch (ServiceException | UtilityException | MapperException e) {
         	return new ResponseEntity<>(e.getMessage(), HttpStatus.EXPECTATION_FAILED);
         }
     }

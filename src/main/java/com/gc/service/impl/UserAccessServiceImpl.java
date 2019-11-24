@@ -5,21 +5,25 @@
  */
 package com.gc.service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.gc.dto.UserDto;
+import com.gc.dto.UserMapper;
 import com.gc.entity.LogEntity;
 import com.gc.entity.UserEntity;
-import com.gc.exception.DtoException;
+import com.gc.exception.MapperException;
 import com.gc.exception.ServiceException;
 import com.gc.exception.UtilityException;
 import com.gc.model.User;
 import com.gc.repository.LoginAccessRepository;
+import com.gc.repository.TransactionRepository;
 import com.gc.repository.UserAccessRepository;
 import com.gc.service.UserAccessService;
 import com.gc.util.MessageConstants;
@@ -40,13 +44,15 @@ public class UserAccessServiceImpl implements UserAccessService {
     @Autowired
     private MessagePropertyReader messagePropertyReader;
     @Autowired
-    private UserDto userDto;
+    private UserMapper userDto;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    private TransactionRepository transactionRepository;
 
 
 	@Override
-	public User loginAccount(String email, String pwd) throws ServiceException, UtilityException, DtoException {
+	public User loginAccount(String email, String pwd) throws ServiceException, UtilityException, MapperException {
 		User userLogin = null;
 		if (null != email && !email.isBlank() && null != pwd && !pwd.isEmpty()) {
 			List<UserEntity> userEntities = this.userAccessRepository.findByEmail(email);
@@ -58,6 +64,15 @@ public class UserAccessServiceImpl implements UserAccessService {
 				} else {
 					if (this.bCryptPasswordEncoder.matches(pwd, userEntity.getPwd())) {
 						userLogin = this.userDto.transferEntityToModel(userEntity);
+						LocalDate ld = LocalDate.of(2019, Month.AUGUST, 1);
+						LocalTime lt = LocalTime.of(0, 0, 0);
+						LocalDateTime ldt1 = LocalDateTime.of(ld, lt);
+						LocalDateTime ldt2 = ldt1.plusDays(30);
+						//List<TransactionEntity> ret = this.transactionRepository.findByRange(ldt1);
+						//List<IncomeGroup> el = this.transactionRepository.findByIncome(ldt1, Currency.USD);
+						//List<IncomeGroup> el = this.transactionRepository.findByIncome();
+						//List<TransactionEntity> ret = this.transactionRepository.findByTrxDateTime(LocalDateTime.of(ld, lt));
+						System.out.println("test");
 					} else {
 						throw new ServiceException(this.messagePropertyReader.toLocale(
 								MessageConstants.GC_LOGIN_USER_INVALID));
@@ -75,7 +90,7 @@ public class UserAccessServiceImpl implements UserAccessService {
 
 
 	@Override
-	public User createUser(User user) throws ServiceException, UtilityException, DtoException {
+	public User createUser(User user) throws ServiceException, UtilityException, MapperException {
 		if (null != user) {
 			if (this.isUserExists(user.getEmail())) {
 				throw new ServiceException(this.messagePropertyReader.toLocale(
@@ -181,7 +196,7 @@ public class UserAccessServiceImpl implements UserAccessService {
 		User user = null;
 		try {
 			user = this.userDto.transferEntityToModel(users.get(0));
-		} catch (DtoException e) {
+		} catch (MapperException e) {
 			throw new ServiceException(e.getMessage());
 		}
 

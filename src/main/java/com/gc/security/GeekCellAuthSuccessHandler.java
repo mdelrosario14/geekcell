@@ -80,12 +80,19 @@ public class GeekCellAuthSuccessHandler extends SimpleUrlAuthenticationSuccessHa
     	}
 
         CsrfToken csrfToken = (CsrfToken)request.getAttribute(CsrfToken.class.getName());
-        LOG.debug("_csrfToken="  + csrfToken.getToken());
+        LOG.warn("_csrfToken="  + csrfToken.getToken());
         node.put("_csrf", csrfToken.getToken());
+
+        LOG.warn("jsessionid=" + request.getSession().getId());
+        node.put("JSESSIONID", request.getSession().getId());
 
         this.createLoginTrail(request.getRemoteAddr(), user.getEmail());
 
         response.setContentType("application/json");
+        //Cookie co = new Cookie("JSESSIONID", node.get("JSESSIONID").asText());
+        //co.setSecure(false);
+
+        //response.addCookie(co);
         PrintWriter writer = response.getWriter();
         writer.print(node);
         writer.flush();

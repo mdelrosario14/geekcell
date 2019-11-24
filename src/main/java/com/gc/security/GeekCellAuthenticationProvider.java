@@ -18,7 +18,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
-import com.gc.exception.DtoException;
+import com.gc.exception.MapperException;
 import com.gc.exception.ServiceException;
 import com.gc.exception.UtilityException;
 import com.gc.model.User;
@@ -73,7 +73,7 @@ public class GeekCellAuthenticationProvider implements AuthenticationProvider  {
 						MessageConstants.GC_LOGIN_USER_INVALID));
 			}
 
-		} catch (ServiceException | UtilityException | DtoException e) {
+		} catch (ServiceException | UtilityException | MapperException e) {
 			LOG.warn("User " + userEmail + ", " + e.getMessage());
 			throw new AuthenticationCredentialsNotFoundException(e.getMessage(), e);
 		}

@@ -5,7 +5,7 @@
  */
 package com.gc.service;
 
-import com.gc.exception.DtoException;
+import com.gc.exception.MapperException;
 import com.gc.exception.ServiceException;
 import com.gc.exception.UtilityException;
 import com.gc.model.User;
@@ -15,8 +15,8 @@ import com.gc.model.User;
  * @author Mardolfh Del Rosario
  */
 public interface UserAccessService {
-	User loginAccount(String email, String pwd) throws ServiceException, UtilityException, DtoException;
-	User createUser(User user) throws ServiceException, UtilityException, DtoException;
+	User loginAccount(String email, String pwd) throws ServiceException, UtilityException, MapperException;
+	User createUser(User user) throws ServiceException, UtilityException, MapperException;
 	void insertLoginTrail(String ipAddress, String userName) throws ServiceException;
 	User getUserDetailsByEmail(String email) throws ServiceException;
 

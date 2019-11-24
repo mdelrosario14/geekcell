@@ -1,8 +1,8 @@
 /.settings/
 /.gradle/
 /bin/
+/build/*
 /.classpath
 /.project
 /.springBeans
-/gc.log
-/gc.log*
+/log/

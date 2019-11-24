@@ -1,3 +1,8 @@
+/**
+ * LogEntity.java - Entity for Login user in the system.
+ * 2019 All rights reserved.
+ *
+ */
 package com.gc.entity;
 
 import java.io.Serializable;
@@ -11,6 +16,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+/**
+ * Entity POJO for LOG_TRAIL table.
+ * @author Mardolfh Del Rosario
+ *
+ */
 @Entity
 @Table(name="LOG_TRAIL")
 public class LogEntity implements Serializable {

@@ -6,31 +6,31 @@
 package com.gc.exception;
 
 /**
- * Data Transfer object class for GeekCell.
+ * Mapper exception for GeekCell.
  *
  * @author Mardolfh Del Rosario
  *
  */
-public class DtoException extends Exception {
+public class MapperException extends Exception {
 
 	private static final long serialVersionUID = -3219418399348453620L;
 
 	/**
-     * This is called for dto type of exceptions.
+     * This is called for mapper type of exceptions.
      *
      * @param errorMessage                 specific error message.
      */
-	public DtoException(String errorMessage) {
+	public MapperException(String errorMessage) {
 		super(errorMessage);
 	}
 
 	/**
-     * This is called for dto type of exceptions with exception object.
+     * This is called for mapper type of exceptions with exception object.
      *
      * @param errorMessage                 specific error message.
      * @param e                            exception ref.
      */
-    public DtoException(String errorMessage, Exception e) {
+    public MapperException(String errorMessage, Exception e) {
         super(errorMessage, e);
     }
 
